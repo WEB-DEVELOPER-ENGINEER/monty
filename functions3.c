@@ -111,6 +111,8 @@ void pstr(stack_t **stack, unsigned int line_number)
 {
 	stack_t *tmp = (*stack);
 
+	int i = 0;
+
 	(void)line_number;
 
 	if (!stack || !(*stack))
@@ -118,11 +120,22 @@ void pstr(stack_t **stack, unsigned int line_number)
 	while (tmp)
 	{
 		if (tmp->n == 0)
-			return;
+		{
+			if (i == 0)
+				return;
+			else
+				goto exi;
+		}
 		if (tmp->n < 32 || tmp->n > 126)
-			return;
+		{
+			if (i == 0)
+				return;
+			else
+				goto exi;
+		}
 		printf("%c", tmp->n);
 		tmp = tmp->next;
+		i++;
 	}
 exi: printf("\n");
 }
