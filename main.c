@@ -29,7 +29,6 @@ void free_all(void)
 		free(tmp1);
 		tmp1 = tmp2;
 	}
-	free(header.buffer);
 	fclose(header.file);
 }
 

@@ -65,7 +65,7 @@ void find_file(char *path, stack_t **stack)
 			function_select(stack, line_number, command);
 		line_number++;
 	}
-	atexit(free_all);
+	free_all();
 
 	/* free(buffer); */
 
