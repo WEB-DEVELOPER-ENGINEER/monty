@@ -121,17 +121,17 @@ void pstr(stack_t **stack, unsigned int line_number)
 	{
 		if (tmp->n == 0)
 		{
-			if (i == 0)
-				return;
-			else
+			if (i != 0)
 				goto exi;
+			else
+				return;
 		}
 		if (tmp->n < 32 || tmp->n > 126)
 		{
-			if (i == 0)
-				return;
-			else
+			if (i != 0)
 				goto exi;
+			else
+				return;
 		}
 		printf("%c", tmp->n);
 		tmp = tmp->next;
