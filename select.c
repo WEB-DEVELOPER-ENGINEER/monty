@@ -14,7 +14,8 @@ void function_select(stack_t **stack, unsigned int line_number, char *command)
 		{"pint", pint}, {"pall", pall}, {"push", push},
 		{"pop", pop}, {"swap", swap}, {"add", add},
 		{"nop", nop}, {"sub", sub}, {"div", _div},
-		{"mul", _mul}, {"mod", _mod}
+		{"mul", _mul}, {"mod", _mod}, {"pchar", pchar},
+		{"pstr", pstr}, {"rotl", _rotl}, {"rotr", _rotr}
 	};
 	int j;
 
