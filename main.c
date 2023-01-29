@@ -5,6 +5,8 @@
  * @stack: Addres of stack
  */
 
+global_t header;
+
 void start_stack(stack_t **stack)
 {
 	*stack = NULL;
@@ -18,7 +20,6 @@ void start_stack(stack_t **stack)
 void free_all(void)
 {
 	stack_t *tmp1, *tmp2 = NULL;
-
 	tmp1 = *(header.first);
 
 	while (tmp1 != NULL)

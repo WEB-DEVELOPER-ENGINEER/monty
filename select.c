@@ -1,4 +1,6 @@
 #include "monty.h"
+#define _GNU_SOURCE
+#include <stdio.h>
 
 /**
  * function_select - select the fucntion
@@ -11,9 +13,7 @@ void function_select(stack_t **stack, unsigned int line_number, char *command)
 	instruction_t functions[] = {
 		{"pint", pint}, {"pall", pall}, {"push", push},
 		{"pop", pop}, {"swap", swap}, {"add", add},
-		{"nop", nop}, {"sub", sub}, {"div", _div},
-		{"mul", _mul}, {"mod", _mod}, {"pchar", pchar},
-		{"pstr", pstr}, {"rotl", _rotl}, {"rotr", _rotr},
+		{"nop", nop},
 		{NULL, NULL}
 	};
 	int j;
@@ -42,9 +42,8 @@ void find_file(char *path, stack_t **stack)
 {
 	FILE *file;
 	char *command;
-	size_t n;
 	unsigned int line_number = 1;
-	char *buffer = NULL;
+	char buffer[128];
 
 	if (!path)
 	{
@@ -58,7 +57,7 @@ void find_file(char *path, stack_t **stack)
 		exit(EXIT_FAILURE);
 	}
 	header.file = file;
-	while (getline(&buffer, &n, file) != -1)
+	while ((fgets(buffer, 128, file)) != NULL)
 	{
 		header.buffer = buffer;
 		command = strtok(buffer, " \n\t\r");

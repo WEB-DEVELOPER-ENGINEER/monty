@@ -32,3 +32,15 @@ void push(stack_t **stack, unsigned int line_number)
 	new_node->next = *stack;
 	*stack = new_node;
 }
+
+/**
+ * nop - Do nothing.
+ * @stack: Head of the doubly linked list.
+ * @line_number: line num
+ */
+
+void nop(stack_t **stack, unsigned int line_number)
+{
+	(void)stack;
+	(void)line_number;
+}
