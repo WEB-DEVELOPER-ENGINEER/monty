@@ -118,9 +118,9 @@ void pstr(stack_t **stack, unsigned int line_number)
 	while (tmp)
 	{
 		if (tmp->n == 0)
-			goto exi;
+			return;
 		if (tmp->n < 32 || tmp->n > 126)
-			goto exi;
+			return;
 		printf("%c", tmp->n);
 		tmp = tmp->next;
 	}
