@@ -20,6 +20,7 @@ void start_stack(stack_t **stack)
 void free_all(void)
 {
 	stack_t *tmp1, *tmp2 = NULL;
+
 	tmp1 = *(header.first);
 
 	while (tmp1 != NULL)
