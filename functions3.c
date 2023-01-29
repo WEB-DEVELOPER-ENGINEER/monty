@@ -42,12 +42,12 @@ void pchar(stack_t **stack, unsigned int line_number)
 		fprintf(stderr, "L%u: can't pchar, stack empty\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	if ((*stack)->n < 32 || (*stack)->n > 126)
+	if ((*stack)->n < 0 || (*stack)->n > 127)
 	{
 		fprintf(stderr, "L%u: can't pchar, value out of range\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	printf("%c\n", (*stack)->n);
+	printf("%c\n", (*stack)->n);	
 }
 
 /**
@@ -109,33 +109,24 @@ void _rotr(stack_t **stack, unsigned int line_number)
 
 void pstr(stack_t **stack, unsigned int line_number)
 {
-	stack_t *tmp = (*stack);
+	int ascii;
 
-	int i = 0;
+	stack_t *tmp;
 
 	(void)line_number;
-
-	if (!stack || !(*stack))
-		goto exi;
-	while (tmp)
+	if (stack == NULL || *stack == NULL)
 	{
-		if (tmp->n == 0)
-		{
-			if (i != 0)
-				goto exi;
-			else
-				return;
-		}
-		if (tmp->n < 32 || tmp->n > 126)
-		{
-			if (i != 0)
-				goto exi;
-			else
-				return;
-		}
-		printf("%c", tmp->n);
-		tmp = tmp->next;
-		i++;
+		printf("\n");
+		return;
 	}
-exi: printf("\n");
+	tmp = *stack;
+	while (tmp != NULL)
+	{
+		ascii = tmp->n;
+		if (ascii <= 0 || ascii > 127)
+			break;
+		printf("%c", ascii);
+		tmp = tmp->next;
+	}
+	printf("\n");
 }
