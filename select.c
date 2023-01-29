@@ -13,8 +13,8 @@ void function_select(stack_t **stack, unsigned int line_number, char *command)
 	instruction_t functions[] = {
 		{"pint", pint}, {"pall", pall}, {"push", push},
 		{"pop", pop}, {"swap", swap}, {"add", add},
-		{"nop", nop},
-		{NULL, NULL}
+		{"nop", nop}, {"sub", sub}, {"div", _div},
+		{NULL, NULL}, {"mul", _mul},
 	};
 	int j;
 
